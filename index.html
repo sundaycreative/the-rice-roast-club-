@@ -1,1 +1,1394 @@
+<!DOCTYPE html>
+<html lang="fi" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Rice & Roast Club | Moderni Aasialainen Ravintola Helsinki</title>
+  <meta name="description" content="The Rice & Roast Club Helsingin Haagassa (Kauppalantie 48). Rapeat paistit, aidot riisikulhot, bbq-erikoisuudet, nopea takeaway ja Wolt-kotiinkuljetus." />
+  
+  <!-- Google Fonts: Plus Jakarta Sans & Space Grotesk -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              orange: '#FF5500',
+              orangeHover: '#E04B00',
+              accent: '#FF7733',
+              dark: '#0C0E12',
+              surface: '#14171F',
+              card: '#1C212C',
+              rice: '#FBF9F5',
+              gray: '#8D96A5',
+              border: '#272D3B',
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Space Grotesk"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0C0E12;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #FF5500;
+      border-radius: 4px;
+    }
+    .glass-header {
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      background-color: rgba(12, 14, 18, 0.92);
+    }
+    .orange-glow {
+      box-shadow: 0 10px 35px -10px rgba(255, 85, 0, 0.45);
+    }
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="bg-brand-dark text-brand-rice font-sans antialiased selection:bg-brand-orange selection:text-white">
+
+  <!-- ==================== HEADER / NAVBAR ==================== -->
+  <header class="fixed top-0 left-0 right-0 z-50 glass-header border-b border-brand-border transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center space-x-3 group">
+        <div class="w-11 h-11 rounded-2xl bg-brand-orange text-white flex items-center justify-center font-display font-bold text-xl shadow-md group-hover:scale-105 transition transform orange-glow">
+          <i class="fa-solid fa-fire-burner"></i>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-display font-bold text-xl sm:text-2xl tracking-tight text-white uppercase flex items-center gap-1.5">
+            Rice & Roast <span class="text-brand-orange">Club</span>
+          </span>
+          <span class="text-[9px] tracking-[0.25em] uppercase text-brand-gray font-bold" data-i18n="navSubtitle">Modern Kitchen & Grill</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden md:flex items-center space-x-7 text-sm font-bold text-brand-rice">
+        <a href="#about" class="hover:text-brand-orange transition py-1" data-i18n="navAbout">Konsepti</a>
+        <a href="#lunch" class="hover:text-brand-orange transition py-1 flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-brand-orange animate-ping"></span>
+          <span data-i18n="navLunch">Lounas</span>
+        </a>
+        <a href="#menu" class="hover:text-brand-orange transition py-1" data-i18n="navMenu">Menu</a>
+        <a href="#gallery" class="hover:text-brand-orange transition py-1" data-i18n="navGallery">Tunnelma</a>
+        <a href="#contact" class="hover:text-brand-orange transition py-1" data-i18n="navContact">Yhteystiedot</a>
+      </nav>
+
+      <!-- Language Selector & Desktop Action Button -->
+      <div class="hidden sm:flex items-center space-x-4">
+        <!-- Language Switcher -->
+        <div class="inline-flex rounded-xl p-1 bg-brand-surface border border-brand-border text-xs font-bold text-white shadow-inner">
+          <button type="button" onclick="changeLanguage('fi')" id="lang-fi" class="lang-btn px-2.5 py-1 rounded-lg transition">FI</button>
+          <button type="button" onclick="changeLanguage('en')" id="lang-en" class="lang-btn px-2.5 py-1 rounded-lg transition">EN</button>
+          <button type="button" onclick="changeLanguage('ru')" id="lang-ru" class="lang-btn px-2.5 py-1 rounded-lg transition">RU</button>
+        </div>
+
+        <!-- Reserve CTA Button -->
+        <a href="#reserve" class="px-5 py-2.5 rounded-xl bg-brand-orange hover:bg-brand-orangeHover text-white text-xs tracking-wider uppercase font-extrabold shadow-md orange-glow transition transform hover:-translate-y-0.5" data-i18n="navReserveBtn">
+          Varaa / Tilaa
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger Button & Mobile Language Selector -->
+      <div class="flex items-center space-x-2 sm:space-x-0 md:hidden">
+        <div class="inline-flex rounded-lg p-0.5 bg-brand-surface border border-brand-border text-[11px] font-bold sm:hidden">
+          <button type="button" onclick="changeLanguage('fi')" id="lang-m-fi" class="lang-btn-mobile px-2 py-0.5 rounded-md">FI</button>
+          <button type="button" onclick="changeLanguage('en')" id="lang-m-en" class="lang-btn-mobile px-2 py-0.5 rounded-md">EN</button>
+          <button type="button" onclick="changeLanguage('ru')" id="lang-m-ru" class="lang-btn-mobile px-2 py-0.5 rounded-md">RU</button>
+        </div>
+        <button type="button" id="mobileMenuToggle" class="p-2 text-white focus:outline-none" aria-label="Avaa valikko">
+          <i class="fa-solid fa-bars-staggered text-2xl"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Navigation -->
+    <div id="mobileMenu" class="hidden md:hidden bg-brand-surface border-b border-brand-border px-6 py-6 space-y-4 shadow-2xl">
+      <a href="#about" class="block text-base font-bold text-white hover:text-brand-orange" onclick="closeMobileMenu()" data-i18n="navAbout">Konsepti</a>
+      <a href="#lunch" class="block text-base font-bold text-white hover:text-brand-orange" onclick="closeMobileMenu()" data-i18n="navLunch">Lounas (Arkisin 10:30–15:00)</a>
+      <a href="#menu" class="block text-base font-bold text-white hover:text-brand-orange" onclick="closeMobileMenu()" data-i18n="navMenu">Menu</a>
+      <a href="#gallery" class="block text-base font-bold text-white hover:text-brand-orange" onclick="closeMobileMenu()" data-i18n="navGallery">Tunnelma</a>
+      <a href="#contact" class="block text-base font-bold text-white hover:text-brand-orange" onclick="closeMobileMenu()" data-i18n="navContact">Yhteystiedot</a>
+      <div class="pt-2 border-t border-brand-border flex flex-col gap-2.5">
+        <a href="tel:+358403653870" class="text-center w-full py-2.5 rounded-xl border border-brand-orange text-brand-orange font-bold text-xs uppercase tracking-wider">
+          <i class="fa-solid fa-phone mr-1.5"></i> 040 365 3870
+        </a>
+        <a href="#reserve" class="block text-center w-full py-3 rounded-xl bg-brand-orange text-white font-extrabold uppercase tracking-wider text-xs shadow" onclick="closeMobileMenu()" data-i18n="navReserveBtn">
+          Varaa Pöytä / Tilaa
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== HERO SECTION ==================== -->
+  <section class="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden bg-gradient-to-b from-brand-surface via-brand-dark to-brand-dark">
+    <!-- Ambient Blur Circles -->
+    <div class="absolute top-10 right-0 -mr-28 w-[500px] h-[500px] rounded-full bg-brand-orange/15 blur-3xl -z-10"></div>
+    <div class="absolute bottom-0 left-0 -ml-28 w-96 h-96 rounded-full bg-brand-orange/10 blur-3xl -z-10"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        
+        <!-- Hero Text -->
+        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+          
+          <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-brand-card border border-brand-border text-xs font-bold text-white shadow-sm">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span data-i18n="heroBadgeStatus">Avoinna tänään • Keittiö klo 21 asti</span>
+            <span class="text-brand-border">•</span>
+            <span class="text-brand-orange flex items-center gap-1.5 font-extrabold">
+              <i class="fa-solid fa-location-dot"></i> Kauppalantie 48, Haaga
+            </span>
+          </div>
+
+          <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.12]">
+            <span data-i18n="heroTitlePart1">Rapeat paistit,</span><br/>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-orange to-brand-accent">savuiset BBQ-aromit</span><br/>
+            <span class="text-2xl sm:text-3xl lg:text-4xl text-brand-gray font-normal" data-i18n="heroTitlePart2">& tuoksuvat riisikulhot</span>
+          </h1>
+
+          <p class="text-base sm:text-lg text-brand-gray max-w-xl mx-auto lg:mx-0 font-normal leading-relaxed" data-i18n="heroSubtitle">
+            The Rice & Roast Club yhdistää modernin katuruokakulttuurin, mehevät hitaasti kypsennetyt paistit, rapean porsaanvatsan ja runsaat mausteiset kulhot Helsingin Haagassa.
+          </p>
+
+          <!-- CTAs -->
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+            <a href="#menu" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-brand-orange hover:bg-brand-orangeHover text-white font-extrabold text-sm text-center shadow-lg orange-glow transition transform hover:-translate-y-0.5" data-i18n="heroCtaMenu">
+              Tutustu Menuun
+            </a>
+            <a href="#reserve" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-brand-surface hover:bg-brand-card border-2 border-brand-orange text-white font-extrabold text-sm text-center shadow-sm hover:shadow transition" data-i18n="heroCtaReserve">
+              Varaa Pöytä / Takeaway
+            </a>
+          </div>
+
+          <!-- Quick Metrics Bar -->
+          <div class="pt-8 border-t border-brand-border grid grid-cols-3 gap-4 max-w-lg mx-auto lg:mx-0">
+            <div>
+              <p class="font-display text-2xl sm:text-3xl font-extrabold text-brand-orange">12h</p>
+              <p class="text-[11px] sm:text-xs text-brand-gray uppercase tracking-wider font-bold" data-i18n="statSlowRoast">Hitaasti paahdettu</p>
+            </div>
+            <div>
+              <p class="font-display text-2xl sm:text-3xl font-extrabold text-white">100%</p>
+              <p class="text-[11px] sm:text-xs text-brand-gray uppercase tracking-wider font-bold" data-i18n="statCrispy">Rapea kuori</p>
+            </div>
+            <div>
+              <p class="font-display text-2xl sm:text-3xl font-extrabold text-brand-orange">12,50 €</p>
+              <p class="text-[11px] sm:text-xs text-brand-gray uppercase tracking-wider font-bold" data-i18n="statLunch">Lounaat alk.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Visual Showcase -->
+        <div class="lg:col-span-5 relative">
+          <div class="relative mx-auto max-w-md lg:max-w-none">
+            <div class="overflow-hidden rounded-3xl shadow-2xl border-4 border-brand-border aspect-[4/5] bg-brand-surface orange-glow">
+              <img 
+                src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1000&q=80" 
+                alt="Crispy Roast Pork & Rice" 
+                class="w-full h-full object-cover hover:scale-105 transition duration-700"
+                onerror="this.src='https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1000&q=80'"
+              />
+            </div>
+            <!-- Floating Dark Badge -->
+            <div class="absolute -bottom-6 -left-6 bg-brand-surface text-white p-4 rounded-2xl shadow-2xl border border-brand-border flex items-center space-x-3.5">
+              <div class="w-12 h-12 rounded-xl bg-brand-orange text-white flex items-center justify-center text-xl shadow-inner">
+                <i class="fa-solid fa-drumstick-bite"></i>
+              </div>
+              <div>
+                <p class="text-[10px] text-brand-accent font-bold uppercase tracking-widest" data-i18n="heroFloatBadgeSub">Talon Klassikko</p>
+                <p class="font-display text-sm font-bold text-white" data-i18n="heroFloatBadgeTitle">Crispy Pork Belly & Garlic Rice</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== LUNCH HIGHLIGHT BLOCK ==================== -->
+  <section id="lunch" class="py-12 bg-gradient-to-r from-brand-card via-brand-surface to-brand-card text-white border-y border-brand-border relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="space-y-2 text-center md:text-left">
+          <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-brand-orange/20 border border-brand-orange text-xs font-bold text-brand-orange uppercase tracking-widest">
+            <i class="fa-solid fa-clock mr-1"></i> <span data-i18n="lunchBadge">Arkisin Ma–Pe 10:30–15:00</span>
+          </div>
+          <h2 class="font-display text-2xl sm:text-3xl font-extrabold" data-i18n="lunchTitle">Club Lounas: Rapeaa Paistia & Riisiä</h2>
+          <p class="text-xs sm:text-sm text-brand-gray max-w-xl" data-i18n="lunchDesc">Päivittäin vaihtuvat lounasannokset: rapeaa possua, grillattua kanaa tai tofua, valkosipuliriisiä, talon pikkelssiä ja dippejä!</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <a href="#menu" class="px-6 py-3 rounded-xl bg-brand-orange hover:bg-brand-orangeHover text-white text-xs font-extrabold uppercase tracking-wider transition shadow-md">
+            <span data-i18n="btnViewMenu">Katso Lounasmenu</span>
+          </a>
+          <a href="tel:+358403653870" class="px-5 py-3 rounded-xl bg-brand-surface hover:bg-brand-border text-white text-xs font-bold uppercase tracking-wider transition border border-brand-border flex items-center gap-2">
+            <i class="fa-solid fa-phone"></i> <span>Tilaa nouto</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ABOUT / CONCEPT ==================== -->
+  <section id="about" class="py-20 bg-brand-surface border-b border-brand-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        
+        <!-- Collage of Food & Fire -->
+        <div class="grid grid-cols-2 gap-4">
+          <div class="space-y-4">
+            <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=800&q=80" alt="Roast Pork & BBQ" class="rounded-2xl shadow-sm object-cover h-64 w-full" onerror="this.src='https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80'" />
+            <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=800&q=80" alt="Rice Bowl" class="rounded-2xl shadow-sm object-cover h-44 w-full" onerror="this.src='https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=800&q=80'" />
+          </div>
+          <div class="space-y-4 pt-8">
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80" alt="Modern Restaurant Ambience" class="rounded-2xl shadow-sm object-cover h-44 w-full" onerror="this.src='https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80'" />
+            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80" alt="Grilled Asian Food" class="rounded-2xl shadow-sm object-cover h-64 w-full" onerror="this.src='https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80'" />
+          </div>
+        </div>
+
+        <!-- Concept Narrative -->
+        <div class="space-y-6">
+          <span class="text-xs uppercase font-extrabold tracking-widest text-brand-orange flex items-center gap-2" data-i18n="aboutBadge">
+            <span class="w-6 h-0.5 bg-brand-orange"></span> Intohimo Paistiin & Riisiin
+          </span>
+          <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-white leading-snug" data-i18n="aboutTitle">
+            Täydellisen rapea kuori, mehevä liha ja mausteinen sielu
+          </h2>
+          <p class="text-brand-gray leading-relaxed font-normal" data-i18n="aboutDesc1">
+            The Rice & Roast Club syntyi rakkaudesta kaakkoisaasialaiseen ja filippiiniläiseen paistikulttuuriin, jossa rapeaksi paahdettu liha ja höyryävä valkosipuliriisi muodostavat voittamattoman liiton.
+          </p>
+          <p class="text-brand-gray leading-relaxed font-normal" data-i18n="aboutDesc2">
+            Haagassa Kauppalantiellä sijaitseva moderni ravintolamme tarjoaa rennon urbaanin ympäristön, reilut annoskoot ja huippuluokan maut. Olitpa tulossa nauttimaan lounaasta ystävien kanssa tai noutamassa illallista kotiin, jokainen annos valmistetaan tuoreena ja suurella sydämellä.
+          </p>
+
+          <div class="pt-2 grid grid-cols-2 gap-4">
+            <div class="p-4 rounded-2xl bg-brand-card border border-brand-border">
+              <i class="fa-solid fa-fire text-brand-orange text-xl mb-2"></i>
+              <h3 class="font-bold text-white text-sm" data-i18n="aboutFeat1">Aito Paahtotekniikka</h3>
+              <p class="text-xs text-brand-gray mt-1" data-i18n="aboutFeat1Desc">Klassinen marinointi ja rapea crackling-nahka</p>
+            </div>
+            <div class="p-4 rounded-2xl bg-brand-card border border-brand-border">
+              <i class="fa-solid fa-bowl-rice text-brand-orange text-xl mb-2"></i>
+              <h3 class="font-bold text-white text-sm" data-i18n="aboutFeat2">Tuoksuvat Riisit & Kastikkeet</h3>
+              <p class="text-xs text-brand-gray mt-1" data-i18n="aboutFeat2Desc">Sinangag-valkosipuliriisi ja itsetehdyt dipit</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== MENU SECTION ==================== -->
+  <section id="menu" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-10">
+      <span class="text-xs uppercase font-extrabold tracking-widest text-brand-orange" data-i18n="menuBadge">Runsas Valikoima</span>
+      <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-white mt-2" data-i18n="menuTitle">The Rice & Roast Club Menu</h2>
+      <p class="text-brand-gray text-sm mt-3 font-normal" data-i18n="menuSubtitle">Valitse suosikkisi rapeista paisteista, täyteläisistä riisikulhoista tai maistuvista katuruoka-alkupaloista!</p>
+      
+      <!-- Category Tabs (Horizontal Scrollable for Mobile) -->
+      <div class="flex items-center justify-start sm:justify-center gap-2 sm:gap-3 mt-8 overflow-x-auto pb-2 hide-scrollbar">
+        <button type="button" onclick="filterMenu('roasts')" id="tab-roasts" class="menu-tab whitespace-nowrap px-5 py-2.5 rounded-xl text-xs font-extrabold bg-brand-orange text-white shadow transition flex-shrink-0">
+          <i class="fa-solid fa-drumstick-bite mr-1.5"></i> <span data-i18n="tabRoasts">Signature Paistit & BBQ</span>
+        </button>
+        <button type="button" onclick="filterMenu('bowls')" id="tab-bowls" class="menu-tab whitespace-nowrap px-5 py-2.5 rounded-xl text-xs font-extrabold bg-brand-surface text-white border border-brand-border hover:bg-brand-card transition flex-shrink-0">
+          <i class="fa-solid fa-bowl-rice mr-1.5"></i> <span data-i18n="tabBowls">Riisikulhot & Wokit</span>
+        </button>
+        <button type="button" onclick="filterMenu('bites')" id="tab-bites" class="menu-tab whitespace-nowrap px-5 py-2.5 rounded-xl text-xs font-extrabold bg-brand-surface text-white border border-brand-border hover:bg-brand-card transition flex-shrink-0">
+          <i class="fa-solid fa-pepper-hot mr-1.5"></i> <span data-i18n="tabBites">Katuruoka & Baot</span>
+        </button>
+        <button type="button" onclick="filterMenu('drinks')" id="tab-drinks" class="menu-tab whitespace-nowrap px-5 py-2.5 rounded-xl text-xs font-extrabold bg-brand-surface text-white border border-brand-border hover:bg-brand-card transition flex-shrink-0">
+          <i class="fa-solid fa-ice-cream mr-1.5"></i> <span data-i18n="tabDrinks">Jälkiruoat & Juomat</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Menu Cards Grid -->
+    <div id="menu-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      
+      <!-- ================= 1. ROASTS & BBQ ================= -->
+      <div class="menu-item roasts bg-brand-surface rounded-2xl p-6 border border-brand-border hover:border-brand-orange hover:shadow-xl transition duration-300 flex flex-col justify-between">
+        <div>
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="font-display text-lg font-extrabold text-white" data-i18n="r1_title">Crispy Lechon Pork Belly</h3>
+            <span class="font-bold text-brand-orange text-base whitespace-nowrap ml-2">16,90 €</span>
+          </div>
+          <p class="text-xs text-brand-gray leading-relaxed font-normal mb-4" data-i18n="r1_desc">Hitaasti paahdettu rapeanahkainen porsaanvatsa, talon maksakastike, pikkelöity papaija (Atchara) ja jasmiiniriisi.</p>
+        </div>
+        <div class="flex items-center gap-2 pt-3 border-t border-brand-border text-[10px] font-bold text-white uppercase">
+          <span class="bg-brand-orange/20 text-brand-orange px-2.5 py-1 rounded-md" data-i18n="tagSignature">Talon Ykköshitti</span>
+          <span class="bg-brand-card px-2.5 py-1 rounded-md">Crispy Skin</span>
+        </div>
+      </div>
+
+      <div class="menu-item roasts bg-brand-surface rounded-2xl p-6 border border-brand-border hover:border-brand-orange hover:shadow-xl transition duration-300 flex flex-col justify-between">
+        <div>
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="font-display text-lg font-extrabold text-white" data-i18n="r2_title">Chicken Inasal Grillilautanen</h3>
+            <span class="font-bold text-brand-orange text-base whitespace-nowrap ml-2">15,50 €</span>
+          </div>
+          <p class="text-xs text-brand-gray leading-relaxed font-normal mb-4" data-i18n="r2_desc">Sitruunaruoholla, inkiväärillä ja calamansi-limetillä marinoitu mehukas grillattu kanankoipi, annattoriisi ja soija-chilikastike.</p>
+        </div>
+        <div class="flex items-center gap-2 pt-3 border-t border-brand-border text-[10px] font-bold text-white uppercase">
+          <span class="bg-brand-card px-2.5 py-1 rounded-md">Flame Grilled</span>
+          <span class="bg-brand-card px-2.5 py-1 rounded-md" data-i18n="tagGlutenFree">Gluteeniton</span>
+        </div>
+      </div>
+
+      <div class="menu-item roasts bg-brand-surface rounded-2xl p-6 border border-brand-border hover:border-brand-orange hover:shadow-xl transition duration-300 flex flex-col justify-between">
+        <div>
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="font-display text-lg font-extrabold text-white" data-i18n="r3_title">Char Siu BBQ Pork Ribs</h3>
+            <span class="font-bold text-brand-orange text-base whitespace-nowrap ml-2">17,50 €</span>
+          </div>
+          <p class="text-xs text-brand-gray leading-relaxed font-normal mb-4" data-i18n="r3_desc">Karamellisoidut kantonilaiset possunribsit viismausteella, seesaminsiemenillä ja valkosipuliriisillä.</p>
+        </div>
+        <div class="flex items-center gap-2 pt-3 border-t border-brand-border text-[10px] font-bold text-white uppercase">
+          <span class="bg-brand-card px-2.5 py-1 rounded-md">Sweet & Savory</span>
+        </div>
+      </div>
+
+      <div class="menu-item roasts bg-brand-surface rounded-2xl p-6 border border-brand-border hover:border-brand-orange hover:shadow-xl transition duration-300 flex flex-col justify-between">
+        <div>
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="font-display text-lg font-extrabold text-white" data-i18n="r4_title">Roast Duck & Bok Choy</h3>
+            <span class="font-bold text-brand-orange text-base whitespace-nowrap ml-2">18,90 €</span>
+          </div>
+          <p class="text-xs text-brand-gray leading-relaxed font-normal mb-4" data-i18n="r4_desc">Mureaa paahdettua ankkaa rapealla nahalla, höyrytettyä paksoita, ankkakastiketta ja aromaattista riisiä.</p>
+        </div>
+        <div class="flex items-center gap-2 pt-3 border-t border-brand-border text-[10px] font-bold text-white uppercase">
+          <span class="bg-brand-card px-2.5 py-1 rounded-md">Premium Duck</span>
+        </div>
+      </div>
+
+      <div class="menu-item roasts bg-brand-surface rounded-2xl p-6 border border-brand-border hover:border-brand-orange hover:shadow-xl transition duration-300 flex flex-col justify-between">
+        <div>
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="font-display text-lg font-extrabold text-white" data-i18n="r5_title">Glazed Beef Brisket Plate</h3>
+            <span class="font-bold text-brand-orange text-base whitespace-nowrap ml-2">17,90 €</span>
+          </div>
+          <p class="text-xs text-brand-gray leading-relaxed font-normal mb-4" data-i18n="r5_desc">Ylikypsäksi haudutettua naudanrintaa tummassa valkosipuli-soijaliemessä, kevätsipulia ja riisiä.</p>
+        </div>
+        <div class="flex items-center gap-2 pt-3 border-t border-brand-border text-[10px] font-bold text-white uppercase">
+          <span class="bg-brand-card px-2.5 py-1 rounded-md">Melt in Mouth</span>
+        </div>
+      </div>
+
+      <div class="menu-item roasts bg-brand-surface rounded-2xl p-6 border border-brand-border hover:border-brand-orange hover:shadow-xl transition duration-300 flex flex-col justify-between">
+        <div>
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="font-display text-lg font-extrabold text-white" data-i18n="r6_title">Roast Trio Combo (Kahdelle)</h3>
+            <span class="font-bold text-brand-orange text-base whitespace-nowrap ml-2">32,00 €</span>
+          </div>
+          <p class="text-xs text-brand-gray leading-relaxed font-normal mb-4" data-i18n="r6_desc">Jaa parhaat maut: Lechon-porsaanvatsaa, Inasal-kanaa ja Char Siu -ribsejä kahdelle riisien ja dippien kera.</p>
+        </div>
+        <div class="flex items-center gap-2 pt-3 border-t border-brand-border text-[10px] font-bold text-white uppercase">
+          <span class="bg-brand-orange/20 text-brand-orange px-2.5 py-1 rounded-md">Sharing Platter</span>
+        </div>
+      </div>
+
+      <!-- ================= 2. BOWLS & CLAYPOTS ================= -->
+      <div class="menu-item bowls hidden bg-brand-surface rounded-2xl p-6 border border-brand-border hover:border-brand-orange hover:shadow-xl transition duration-300 flex flex-col justify-between">
+        <div>
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="font-display text-lg font-extrabold text-white" data-i18n="b1_title">Pork Sisig Rice Bowl</h3>
+            <span class="font-bold text-brand-orange text-base whitespace-nowrap ml-2">14,90 €</span>
+          </div>
+          <p class="text-xs text-brand-gray leading-relaxed font-normal mb-4" data-i18n="b1_desc">Pannulla tirisevää rapeaa porsaanlihaa, sipulia, chiliä, paistettu kananmuna ja valkosipuliriisi (Sinangag).</p>
+        </div>
+        <div class="flex items-center gap-2 pt-3 border-t border-brand-border text-[10px] font-bold text-white uppercase">
+          <span class="bg-brand-orange/20 text-brand-orange px-2.5 py-1 rounded-md" data-i18n="tagPopular">Kansansuosikki</span>
+          <span class="bg-brand-card px-2.5 py-1 rounded-md">Sizzling Flavor</span>
+        </div>
+      </div>
+
+      <div class="menu-item bowls hidden bg-brand-surface rounded-2xl p-6 border border-brand-border hover:border-brand-orange hover:shadow-xl transition duration-300 flex flex-col justify-between">
+        <div>
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="font-display text-lg font-extrabold text-white" data-i18n="b2_title">Classic Chicken Adobo Bowl</h3>
+            <span class="font-bold text-brand-orange text-base whitespace-nowrap ml-2">14,50 €</span>
+          </div>
+          <p class="text-xs text-brand-gray leading-relaxed font-normal mb-4" data-i18n="b2_desc">Filippiinien kansallisruoka: hitaasti soijassa, etikassa, valkosipulissa ja laakerinlehdissä haudutettua kanaa.</p>
+        </div>
+        <div class="flex items-center gap-2 pt-3 border-t border-brand-border text-[10px] font-bold text-white uppercase">
+          <span class="bg-brand-card px-2.5 py-1 rounded-md">Traditional</span>
+        </div>
+      </div>
+
+      <div class="menu-item bowls hidden bg-brand-surface rounded-2xl p-6 border border-brand-border hover:border-brand-orange hover:shadow-xl transition duration-300 flex flex-col justify-between">
+        <div>
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="font-display text-lg font-extrabold text-white" data-i18n="b3_title">Kookos-Keltajuuri Kasviscurry</h3>
+            <span class="font-bold text-brand-orange text-base whitespace-nowrap ml-2">13,90 €</span>
+          </div>
+          <p class="text-xs text-brand-gray leading-relaxed font-normal mb-4" data-i18n="b3_desc">Kermainen kurkuma-kookoskastike, paistettua tofua, bataattia, vihreitä papuja ja tuoretta korianteria.</p>
+        </div>
+        <div class="flex items-center gap-2 pt-3 border-t border-brand-border text-[10px] font-bold text-white uppercase">
+          <span class="bg-emerald-950 text-emerald-400 border border-emerald-800 px-2.5 py-1 rounded-md" data-i18n="tagVeg">Vegaaninen / Kasvis</span>
+        </div>
+      </div>
+
+      <!-- ================= 3. STREET BITES & BAOS ================= -->
+      <div class="menu-item bites hidden bg-brand-surface rounded-2xl p-6 border border-brand-border hover:border-brand-orange hover:shadow-xl transition duration-300 flex flex-col justify-between">
+        <div>
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="font-display text-lg font-extrabold text-white" data-i18n="s1_title">Lumpiang Shanghai (6 kpl)</h3>
+            <span class="font-bold text-brand-orange text-base whitespace-nowrap ml-2">7,50 €</span>
+          </div>
+          <p class="text-xs text-brand-gray leading-relaxed font-normal mb-4" data-i18n="s1_desc">Rapeita filippiiniläisiä kevätrullia porsaanliha- ja kasvistätteellä sekä makeaa chilikastiketta.</p>
+        </div>
+        <div class="flex items-center gap-2 pt-3 border-t border-brand-border text-[10px] font-bold text-white uppercase">
+          <span class="bg-brand-card px-2.5 py-1 rounded-md">Crispy Starter</span>
+        </div>
+      </div>
+
+      <div class="menu-item bites hidden bg-brand-surface rounded-2xl p-6 border border-brand-border hover:border-brand-orange hover:shadow-xl transition duration-300 flex flex-col justify-between">
+        <div>
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="font-display text-lg font-extrabold text-white" data-i18n="s2_title">Roast Pork Belly Bao Buns (2 kpl)</h3>
+            <span class="font-bold text-brand-orange text-base whitespace-nowrap ml-2">9,50 €</span>
+          </div>
+          <p class="text-xs text-brand-gray leading-relaxed font-normal mb-4" data-i18n="s2_desc">Pehmeät höyrysämpylät, rapeaa porsaanvatsaa, hoisin-kastiketta, kurkkua ja maapähkinämurskaa.</p>
+        </div>
+        <div class="flex items-center gap-2 pt-3 border-t border-brand-border text-[10px] font-bold text-white uppercase">
+          <span class="bg-brand-orange/20 text-brand-orange px-2.5 py-1 rounded-md">Bao Special</span>
+        </div>
+      </div>
+
+      <div class="menu-item bites hidden bg-brand-surface rounded-2xl p-6 border border-brand-border hover:border-brand-orange hover:shadow-xl transition duration-300 flex flex-col justify-between">
+        <div>
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="font-display text-lg font-extrabold text-white" data-i18n="s3_title">Sticky Calamansi Wings (6 kpl)</h3>
+            <span class="font-bold text-brand-orange text-base whitespace-nowrap ml-2">8,50 €</span>
+          </div>
+          <p class="text-xs text-brand-gray leading-relaxed font-normal mb-4" data-i18n="s3_desc">Rapeat kanansiivet makean tulisella calamansi-hunajaglasyyreilla ja seesaminsiemenillä.</p>
+        </div>
+        <div class="flex items-center gap-2 pt-3 border-t border-brand-border text-[10px] font-bold text-white uppercase">
+          <span class="bg-brand-card px-2.5 py-1 rounded-md">Finger Licking</span>
+        </div>
+      </div>
+
+      <!-- ================= 4. DESSERTS & DRINKS ================= -->
+      <div class="menu-item drinks hidden bg-brand-surface rounded-2xl p-6 border border-brand-border hover:border-brand-orange hover:shadow-xl transition duration-300 flex flex-col justify-between">
+        <div>
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="font-display text-lg font-extrabold text-white" data-i18n="d1_title">Club Halo-Halo Special</h3>
+            <span class="font-bold text-brand-orange text-base whitespace-nowrap ml-2">7,90 €</span>
+          </div>
+          <p class="text-xs text-brand-gray leading-relaxed font-normal mb-4" data-i18n="d1_desc">Klassinen aasialainen jäähilejälkiruoka: ube-jäätelöä, leche flania, makeita papuja, kookoshyytelöä ja maitoa.</p>
+        </div>
+        <div class="flex items-center gap-2 pt-3 border-t border-brand-border text-[10px] font-bold text-white uppercase">
+          <span class="bg-brand-orange/20 text-brand-orange px-2.5 py-1 rounded-md">Legendary Dessert</span>
+        </div>
+      </div>
+
+      <div class="menu-item drinks hidden bg-brand-surface rounded-2xl p-6 border border-brand-border hover:border-brand-orange hover:shadow-xl transition duration-300 flex flex-col justify-between">
+        <div>
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="font-display text-lg font-extrabold text-white" data-i18n="d2_title">Ube Leche Flan Cake</h3>
+            <span class="font-bold text-brand-orange text-base whitespace-nowrap ml-2">6,50 €</span>
+          </div>
+          <p class="text-xs text-brand-gray leading-relaxed font-normal mb-4" data-i18n="d2_desc">Kerroskakkupala: pehmeää violettia ube-sokerikakkua ja karamellista kermaista paahtovanukasta.</p>
+        </div>
+        <div class="flex items-center gap-2 pt-3 border-t border-brand-border text-[10px] font-bold text-white uppercase">
+          <span class="bg-brand-card px-2.5 py-1 rounded-md">House Baked</span>
+        </div>
+      </div>
+
+      <div class="menu-item drinks hidden bg-brand-surface rounded-2xl p-6 border border-brand-border hover:border-brand-orange hover:shadow-xl transition duration-300 flex flex-col justify-between">
+        <div>
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="font-display text-lg font-extrabold text-white" data-i18n="dr1_title">Calamansi Jäätee & Juomat</h3>
+            <span class="font-bold text-brand-orange text-base whitespace-nowrap ml-2">4,50 €</span>
+          </div>
+          <p class="text-xs text-brand-gray leading-relaxed font-normal mb-4" data-i18n="dr1_desc">Raikas itsetehty calamansi-sitrusjäätee, aasialaiset oluet (San Miguel, Singha) ja virvokkeet.</p>
+        </div>
+        <div class="flex items-center gap-2 pt-3 border-t border-brand-border text-[10px] font-bold text-white uppercase">
+          <span class="bg-brand-card px-2.5 py-1 rounded-md">Refresher</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Wolt / Delivery & Takeaway Banner -->
+    <div class="mt-14 p-8 rounded-3xl bg-brand-surface text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl border border-brand-border">
+      <div class="flex items-center space-x-4">
+        <div class="w-14 h-14 rounded-2xl bg-brand-orange text-white flex items-center justify-center text-2xl flex-shrink-0 shadow-lg orange-glow">
+          <i class="fa-solid fa-motorcycle"></i>
+        </div>
+        <div>
+          <h4 class="font-display text-lg font-extrabold" data-i18n="woltBannerTitle">Tilaa Rice & Roast Kotiin tai Nouda</h4>
+          <p class="text-xs text-brand-gray max-w-xl mt-1 font-normal" data-i18n="woltBannerDesc">Koko ruokalista saatavilla nopealla kotiinkuljetuksella Woltista tai kätevästi mukaan noudettuna Kauppalantieltä!</p>
+        </div>
+      </div>
+      <div class="flex flex-wrap gap-3">
+        <a href="tel:+358403653870" class="px-5 py-3 rounded-xl bg-brand-card hover:bg-brand-border text-white text-xs font-bold uppercase tracking-wider transition border border-brand-border flex items-center gap-2">
+          <i class="fa-solid fa-phone"></i> 040 365 3870
+        </a>
+        <a href="https://wolt.com" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-xl bg-brand-orange hover:bg-brand-orangeHover text-white text-xs font-extrabold uppercase tracking-wider transition shadow-md flex items-center gap-2">
+          <span>Wolt Delivery</span> <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== GALLERY ==================== -->
+  <section id="gallery" class="py-20 bg-brand-dark border-t border-brand-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-xl mx-auto mb-12">
+        <span class="text-xs uppercase font-extrabold tracking-widest text-brand-orange" data-i18n="galleryBadge">Tunnelmia</span>
+        <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-white mt-1" data-i18n="galleryTitle">Clubin Fiilistä & Ruokaa</h2>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="relative overflow-hidden rounded-2xl group h-64 bg-brand-surface shadow-sm">
+          <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80" alt="Crispy roast" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=600&q=80'" />
+          <div class="absolute inset-0 bg-brand-dark/50 opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4 text-white text-xs font-bold" data-i18n="g1_tag">Rapea Paisti</div>
+        </div>
+        <div class="relative overflow-hidden rounded-2xl group h-64 bg-brand-surface shadow-sm">
+          <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=600&q=80" alt="Rice bowl" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=600&q=80'" />
+          <div class="absolute inset-0 bg-brand-dark/50 opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4 text-white text-xs font-bold" data-i18n="g2_tag">Garlic Rice Bowls</div>
+        </div>
+        <div class="relative overflow-hidden rounded-2xl group h-64 bg-brand-surface shadow-sm">
+          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=600&q=80" alt="BBQ Ribs" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80'" />
+          <div class="absolute inset-0 bg-brand-dark/50 opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4 text-white text-xs font-bold" data-i18n="g3_tag">BBQ Ribsit</div>
+        </div>
+        <div class="relative overflow-hidden rounded-2xl group h-64 bg-brand-surface shadow-sm">
+          <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80" alt="Ravintolan tila" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=600&q=80'" />
+          <div class="absolute inset-0 bg-brand-dark/50 opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4 text-white text-xs font-bold" data-i18n="g4_tag">Urbaani Ilmapiiri</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== RESERVATIONS & ORDERS ==================== -->
+  <section id="reserve" class="py-20 bg-brand-surface">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-brand-card rounded-3xl shadow-2xl border border-brand-border p-8 sm:p-12 orange-glow">
+        
+        <div class="text-center max-w-lg mx-auto mb-10">
+          <span class="text-xs uppercase font-extrabold tracking-widest text-brand-orange" data-i18n="resBadge">Varaus & Noutotilaus</span>
+          <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-white mt-1" data-i18n="resTitle">Pöytävaraus tai Ennakkotilaus</h2>
+          <p class="text-brand-gray text-xs sm:text-sm mt-2 font-normal" data-i18n="resSubtitle">Varaa pöytä paikan päältä nauttimiseen tai tilaa takeaway etukäteen noudettavaksi. Vahvistamme varauksen viipymättä!</p>
+        </div>
+
+        <form id="reservationForm" onsubmit="handleReservation(event)" class="space-y-6">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-xs font-bold text-white uppercase tracking-wider mb-2" data-i18n="labelName">Nimi *</label>
+              <input type="text" required id="fieldName" placeholder="Antti Lehtonen" class="w-full px-4 py-3 rounded-xl bg-brand-surface border border-brand-border focus:border-brand-orange focus:ring-1 focus:ring-brand-orange text-sm outline-none transition font-medium text-white" />
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-white uppercase tracking-wider mb-2" data-i18n="labelPhone">Puhelinnumero *</label>
+              <input type="tel" required id="fieldPhone" placeholder="+358 40 123 4567" class="w-full px-4 py-3 rounded-xl bg-brand-surface border border-brand-border focus:border-brand-orange focus:ring-1 focus:ring-brand-orange text-sm outline-none transition font-medium text-white" />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <div>
+              <label class="block text-xs font-bold text-white uppercase tracking-wider mb-2" data-i18n="labelDate">Päivämäärä *</label>
+              <input type="date" required class="w-full px-4 py-3 rounded-xl bg-brand-surface border border-brand-border focus:border-brand-orange focus:ring-1 focus:ring-brand-orange text-sm outline-none transition font-medium text-white" />
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-white uppercase tracking-wider mb-2" data-i18n="labelType">Tyyppi *</label>
+              <select required class="w-full px-4 py-3 rounded-xl bg-brand-surface border border-brand-border focus:border-brand-orange focus:ring-1 focus:ring-brand-orange text-sm outline-none transition font-medium text-white">
+                <option value="table" data-i18n="optTable">Pöytävaraus ravintolaan</option>
+                <option value="takeaway" data-i18n="optTakeaway">Takeaway Noutotilaus</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-white uppercase tracking-wider mb-2" data-i18n="labelGuests">Henkilömäärä / Koko *</label>
+              <select required class="w-full px-4 py-3 rounded-xl bg-brand-surface border border-brand-border focus:border-brand-orange focus:ring-1 focus:ring-brand-orange text-sm outline-none transition font-medium text-white">
+                <option value="1" data-i18n="opt1">1 hlö / 1 annos</option>
+                <option value="2" selected data-i18n="opt2">2 hlö / 2 annosta</option>
+                <option value="4" data-i18n="opt3">3–4 hlö / Perheateria</option>
+                <option value="6+" data-i18n="opt4">5+ hlö / Ryhmävaraus</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-white uppercase tracking-wider mb-2" data-i18n="labelNotes">Toiveet, allergiat tai tilattavat annokset</label>
+            <textarea rows="3" id="fieldNotes" placeholder="Esim. 2x Crispy Lechon Pork Belly, nouto klo 18:00..." class="w-full px-4 py-3 rounded-xl bg-brand-surface border border-brand-border focus:border-brand-orange focus:ring-1 focus:ring-brand-orange text-sm outline-none transition font-medium text-white"></textarea>
+          </div>
+
+          <div class="text-center pt-2">
+            <button type="submit" class="w-full sm:w-auto px-10 py-3.5 rounded-xl bg-brand-orange hover:bg-brand-orangeHover text-white font-extrabold text-xs tracking-wider uppercase shadow-lg orange-glow transition transform hover:-translate-y-0.5" data-i18n="btnSubmitRes">
+              Lähetä Varaus / Tilaus
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== GUEST REVIEWS ==================== -->
+  <section id="reviews" class="py-20 bg-brand-dark border-t border-brand-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-xl mx-auto mb-14">
+        <span class="text-xs uppercase font-extrabold tracking-widest text-brand-orange" data-i18n="reviewsBadge">Asiakaspalautteet</span>
+        <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-white mt-1" data-i18n="reviewsTitle">Mitä Asiakkaamme Sanovat</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Review 1 -->
+        <div class="bg-brand-surface p-7 rounded-2xl border border-brand-border shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="text-brand-orange flex space-x-1 mb-3 text-xs">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="text-xs sm:text-sm text-brand-rice leading-relaxed font-normal italic mb-6" data-i18n="rev1_text">
+              "Koko Helsingin rapein ja mehukkain possunkylki! Valkosipuliriisi vie kielen mennessään ja palvelu on todella ystävällistä. Haagan ehdoton helmi!"
+            </p>
+          </div>
+          <div class="flex items-center space-x-3 pt-3 border-t border-brand-border">
+            <div class="w-9 h-9 rounded-xl bg-brand-orange text-white font-bold flex items-center justify-center text-xs">JH</div>
+            <div>
+              <p class="font-bold text-xs text-white">Joonas H.</p>
+              <p class="text-[10px] text-brand-gray">Google Review • ★★★★★</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="bg-brand-surface p-7 rounded-2xl border border-brand-border shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="text-brand-orange flex space-x-1 mb-3 text-xs">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="text-xs sm:text-sm text-brand-rice leading-relaxed font-normal italic mb-6" data-i18n="rev2_text">
+              "Incredible roast pork belly and flavorful Chicken Inasal! True authentic tastes with modern style. The Halo-Halo dessert was the cherry on top."
+            </p>
+          </div>
+          <div class="flex items-center space-x-3 pt-3 border-t border-brand-border">
+            <div class="w-9 h-9 rounded-xl bg-brand-orange text-white font-bold flex items-center justify-center text-xs">MS</div>
+            <div>
+              <p class="font-bold text-xs text-white">Maria Santos</p>
+              <p class="text-[10px] text-brand-gray">Google Review • ★★★★★</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="bg-brand-surface p-7 rounded-2xl border border-brand-border shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="text-brand-orange flex space-x-1 mb-3 text-xs">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="text-xs sm:text-sm text-brand-rice leading-relaxed font-normal italic mb-6" data-i18n="rev3_text">
+              "Очень крутое заведение! Хрустящая свинина лечон с чесночным рисом — шедевр. Стильный современный интерьер и огромные порции. Обязательно вернемся!"
+            </p>
+          </div>
+          <div class="flex items-center space-x-3 pt-3 border-t border-brand-border">
+            <div class="w-9 h-9 rounded-xl bg-brand-orange text-white font-bold flex items-center justify-center text-xs">АК</div>
+            <div>
+              <p class="font-bold text-xs text-white">Алексей К.</p>
+              <p class="text-[10px] text-brand-gray">Google Review • ★★★★★</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== LOCATION & HOURS ==================== -->
+  <section id="contact" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+      
+      <!-- Details Card -->
+      <div class="lg:col-span-5 bg-brand-surface p-8 rounded-3xl border border-brand-border space-y-8 shadow-sm">
+        <div>
+          <span class="text-xs uppercase font-extrabold tracking-widest text-brand-orange" data-i18n="contactBadge">Löydä Meidät</span>
+          <h2 class="font-display text-3xl font-extrabold text-white mt-1" data-i18n="contactTitle">Sijainti & Aukiolo</h2>
+        </div>
+
+        <div class="space-y-4 text-sm text-brand-rice">
+          <div class="flex items-start space-x-3.5">
+            <i class="fa-solid fa-location-dot text-brand-orange text-lg mt-0.5"></i>
+            <div>
+              <p class="font-bold text-white" data-i18n="addressLabel">Osoite</p>
+              <p class="font-normal text-brand-gray">Kauppalantie 48, 00320 Helsinki (Etelä-Haaga)</p>
+              <a href="https://maps.app.goo.gl/FjR95Ssc1ne4RgS46?g_st=ic" target="_blank" rel="noopener noreferrer" class="text-xs text-brand-orange font-bold underline mt-1 inline-block hover:text-brand-accent" data-i18n="openMaps">
+                Avaa Google Mapsissa &rarr;
+              </a>
+            </div>
+          </div>
+
+          <div class="flex items-start space-x-3.5">
+            <i class="fa-solid fa-phone text-brand-orange text-base mt-1"></i>
+            <div>
+              <p class="font-bold text-white" data-i18n="phoneLabel">Puhelin & Tilaukset</p>
+              <div class="flex flex-col">
+                <a href="tel:+358403653870" class="font-bold text-brand-orange hover:underline text-base">+358 40 365 3870</a>
+                <a href="tel:+358449664216" class="font-normal text-brand-gray hover:text-white transition">+358 44 966 4216</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex items-start space-x-3.5">
+            <i class="fa-solid fa-envelope text-brand-orange text-base mt-1"></i>
+            <div>
+              <p class="font-bold text-white">Email</p>
+              <a href="mailto:thericeandroastclub@gmail.com" class="font-normal text-brand-gray hover:text-white transition">thericeandroastclub@gmail.com</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hours List -->
+        <div class="pt-4 border-t border-brand-border">
+          <h3 class="font-display text-base font-bold text-white mb-3 flex items-center gap-2">
+            <i class="fa-regular fa-clock text-brand-orange"></i>
+            <span data-i18n="hoursTitle">Aukioloajat</span>
+          </h3>
+          <ul class="text-xs space-y-2 text-brand-rice">
+            <li class="flex justify-between py-1.5 border-b border-brand-border">
+              <span data-i18n="daysMonFri">Maanantai – Perjantai</span>
+              <span class="font-bold text-white">10:30 – 21:00</span>
+            </li>
+            <li class="flex justify-between py-1.5 border-b border-brand-border">
+              <span data-i18n="daySat">Lauantai</span>
+              <span class="font-bold text-white">11:30 – 21:00</span>
+            </li>
+            <li class="flex justify-between py-1.5 border-b border-brand-border">
+              <span data-i18n="daySun">Sunnuntai</span>
+              <span class="font-bold text-white">12:00 – 20:00</span>
+            </li>
+            <li class="flex justify-between py-1 text-brand-orange font-semibold">
+              <span data-i18n="lunchHoursNote">Lounasaika (Ma–Pe)</span>
+              <span>10:30 – 15:00</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Social Icons -->
+        <div class="flex space-x-3 pt-2">
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl bg-brand-card hover:bg-brand-orange hover:text-white flex items-center justify-center transition text-brand-gray" aria-label="Facebook">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl bg-brand-card hover:bg-brand-orange hover:text-white flex items-center justify-center transition text-brand-gray" aria-label="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="https://wolt.com" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl bg-brand-card hover:bg-brand-orange hover:text-white flex items-center justify-center transition text-brand-gray" aria-label="Wolt">
+            <i class="fa-solid fa-motorcycle"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Google Map Frame -->
+      <div class="lg:col-span-7 h-[430px] rounded-3xl overflow-hidden border border-brand-border shadow-xl relative bg-brand-surface">
+        <iframe 
+          title="The Rice and Roast Club Google Map"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1982.8468943719047!2d24.89639987746197!3d60.21080897505703!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x469209ef7e6f663b%3A0x2ff2ec4c979d5df6!2sKauppalantie%2048%2C%2000320%20Helsinki!5e0!3m2!1sfi!2sfi!4v1700000000000!5m2!1sfi!2sfi" 
+          width="100%" 
+          height="100%" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+        <div class="absolute bottom-4 left-4 right-4 bg-brand-surface/95 backdrop-blur-md p-3.5 rounded-2xl border border-brand-border flex items-center justify-between shadow-lg">
+          <div class="text-xs text-white">
+            <span class="font-bold text-brand-orange">The Rice & Roast Club</span> — Kauppalantie 48, Haaga
+          </div>
+          <a href="https://maps.app.goo.gl/FjR95Ssc1ne4RgS46?g_st=ic" target="_blank" rel="noopener noreferrer" class="px-4 py-1.5 rounded-xl bg-brand-orange text-white text-[11px] font-bold hover:bg-brand-orangeHover transition" data-i18n="openMapRoute">
+            Reittiohjeet &rarr;
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="bg-black text-brand-rice py-14 border-t border-brand-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-10 border-b border-brand-border">
+        
+        <div class="space-y-3 md:col-span-2">
+          <div class="flex items-center space-x-2">
+            <div class="w-8 h-8 rounded-lg bg-brand-orange text-white flex items-center justify-center font-bold">
+              <i class="fa-solid fa-fire text-sm"></i>
+            </div>
+            <span class="font-display text-2xl font-bold tracking-wider text-white">The Rice & Roast Club</span>
+          </div>
+          <p class="text-xs text-brand-gray max-w-sm font-normal leading-relaxed" data-i18n="footerTagline">
+            Rapeaa paistia, hitaasti kypsennettyä BBQ:ta ja höyryäviä mausteisia riisikulhoja Helsingin Etelä-Haagassa.
+          </p>
+        </div>
+
+        <div class="space-y-2">
+          <h4 class="text-xs uppercase font-bold tracking-wider text-brand-orange" data-i18n="footerNavTitle">Pikalinkit</h4>
+          <ul class="text-xs space-y-1.5 text-brand-gray font-medium">
+            <li><a href="#about" class="hover:text-white transition" data-i18n="navAbout">Konsepti</a></li>
+            <li><a href="#lunch" class="hover:text-white transition" data-i18n="navLunch">Lounas</a></li>
+            <li><a href="#menu" class="hover:text-white transition" data-i18n="navMenu">Menu</a></li>
+            <li><a href="#reserve" class="hover:text-white transition" data-i18n="navReserveBtn">Varaa / Tilaa</a></li>
+            <li><a href="#contact" class="hover:text-white transition" data-i18n="navContact">Yhteystiedot</a></li>
+          </ul>
+        </div>
+
+        <div class="space-y-2">
+          <h4 class="text-xs uppercase font-bold tracking-wider text-brand-orange" data-i18n="contactBadge">Rice & Roast Club</h4>
+          <p class="text-xs text-brand-gray">Kauppalantie 48, 00320 Helsinki</p>
+          <p class="text-xs text-brand-gray">Puh: 040 365 3870</p>
+          <p class="text-xs text-brand-gray">thericeandroastclub@gmail.com</p>
+        </div>
+      </div>
+
+      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between text-[11px] text-brand-gray font-medium">
+        <p>© <span id="currentYear"></span> The Rice & Roast Club. All rights reserved.</p>
+        <p class="mt-2 sm:mt-0 font-display uppercase tracking-widest text-brand-orange">Crispy Roasts & Rice • Helsinki</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== CONFIRMATION MODAL ==================== -->
+  <div id="reservationModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-brand-card rounded-3xl max-w-md w-full p-8 text-center shadow-2xl border border-brand-orange transform transition-all orange-glow">
+      <div class="w-16 h-16 rounded-2xl bg-brand-orange text-white flex items-center justify-center mx-auto text-2xl mb-4 shadow-md">
+        <i class="fa-solid fa-check"></i>
+      </div>
+      <h3 class="font-display text-2xl font-bold text-white mb-2" data-i18n="modalTitle">Varaus / Tilaus Vastaanotettu!</h3>
+      <p class="text-xs sm:text-sm text-brand-gray font-normal mb-6" data-i18n="modalMsg">
+        Kiitos tilauksestasi tai varauksestasi. Olemme vastaanottaneet tietosi ja otamme sinuun pikaisesti yhteyttä vahvistuksemme kera. Nähdään The Rice & Roast Clubilla!
+      </p>
+      <button type="button" onclick="closeModal()" class="w-full py-3 rounded-xl bg-brand-orange hover:bg-brand-orangeHover text-white text-xs uppercase font-extrabold tracking-wider transition" data-i18n="btnModalClose">
+        Selvä, kiitos!
+      </button>
+    </div>
+  </div>
+
+  <!-- ==================== JAVASCRIPT: I18N & INTERACTIONS ==================== -->
+  <script>
+    // 1. Multilingual Translation Dictionary (FI / EN / RU)
+    const i18n = {
+      fi: {
+        navSubtitle: "Modern Kitchen & Grill",
+        navAbout: "Konsepti",
+        navLunch: "Lounas",
+        navMenu: "Menu",
+        navGallery: "Tunnelma",
+        navContact: "Yhteystiedot",
+        navReserveBtn: "Varaa / Tilaa",
+        heroBadgeStatus: "Avoinna tänään • Keittiö klo 21 asti",
+        heroTitlePart1: "Rapeat paistit,",
+        heroTitlePart2: "& tuoksuvat riisikulhot",
+        heroSubtitle: "The Rice & Roast Club yhdistää modernin katuruokakulttuurin, mehevät hitaasti kypsennetyt paistit, rapean porsaanvatsan ja runsaat mausteiset kulhot Helsingin Haagassa.",
+        heroCtaMenu: "Tutustu Menuun",
+        heroCtaReserve: "Varaa Pöytä / Takeaway",
+        statSlowRoast: "Hitaasti paahdettu",
+        statCrispy: "Rapea kuori",
+        statLunch: "Lounaat alk.",
+        heroFloatBadgeSub: "Talon Klassikko",
+        heroFloatBadgeTitle: "Crispy Pork Belly & Garlic Rice",
+        lunchBadge: "Arkisin Ma–Pe 10:30–15:00",
+        lunchTitle: "Club Lounas: Rapeaa Paistia & Riisiä",
+        lunchDesc: "Päivittäin vaihtuvat lounasannokset: rapeaa possua, grillattua kanaa tai tofua, valkosipuliriisiä, talon pikkelssiä ja dippejä!",
+        btnViewMenu: "Katso Lounasmenu",
+        aboutBadge: "Intohimo Paistiin & Riisiin",
+        aboutTitle: "Täydellisen rapea kuori, mehevä liha ja mausteinen sielu",
+        aboutDesc1: "The Rice & Roast Club syntyi rakkaudesta kaakkoisaasialaiseen ja filippiiniläiseen paistikulttuuriin, jossa rapeaksi paahdettu liha ja höyryävä valkosipuliriisi muodostavat voittamattoman liiton.",
+        aboutDesc2: "Haagassa Kauppalantiellä sijaitseva moderni ravintolamme tarjoaa rennon urbaanin ympäristön, reilut annoskoot ja huippuluokan maut. Olitpa tulossa nauttimaan lounaasta ystävien kanssa tai noutamassa illallista kotiin, jokainen annos valmistetaan tuoreena ja suurella sydämellä.",
+        aboutFeat1: "Aito Paahtotekniikka",
+        aboutFeat1Desc: "Klassinen marinointi ja rapea crackling-nahka",
+        aboutFeat2: "Tuoksuvat Riisit & Kastikkeet",
+        aboutFeat2Desc: "Sinangag-valkosipuliriisi ja itsetehdyt dipit",
+        menuBadge: "Runsas Valikoima",
+        menuTitle: "The Rice & Roast Club Menu",
+        menuSubtitle: "Valitse suosikkisi rapeista paisteista, täyteläisistä riisikulhoista tai maistuvista katuruoka-alkupaloista!",
+        tabRoasts: "Signature Paistit & BBQ",
+        tabBowls: "Riisikulhot & Wokit",
+        tabBites: "Katuruoka & Baot",
+        tabDrinks: "Jälkiruoat & Juomat",
+        tagSignature: "Talon Ykköshitti",
+        tagGlutenFree: "Gluteeniton",
+        tagPopular: "Kansansuosikki",
+        tagVeg: "Vegaaninen / Kasvis",
+        r1_title: "Crispy Lechon Pork Belly",
+        r1_desc: "Hitaasti paahdettu rapeanahkainen porsaanvatsa, talon maksakastike, pikkelöity papaija (Atchara) ja jasmiiniriisi.",
+        r2_title: "Chicken Inasal Grillilautanen",
+        r2_desc: "Sitruunaruoholla, inkiväärillä ja calamansi-limetillä marinoitu mehukas grillattu kanankoipi, annattoriisi ja soija-chilikastike.",
+        r3_title: "Char Siu BBQ Pork Ribs",
+        r3_desc: "Karamellisoidut kantonilaiset possunribsit viismausteella, seesaminsiemenillä ja valkosipuliriisillä.",
+        r4_title: "Roast Duck & Bok Choy",
+        r4_desc: "Mureaa paahdettua ankkaa rapealla nahalla, höyrytettyä paksoita, ankkakastiketta ja aromaattista riisiä.",
+        r5_title: "Glazed Beef Brisket Plate",
+        r5_desc: "Ylikypsäksi haudutettua naudanrintaa tummassa valkosipuli-soijaliemessä, kevätsipulia ja riisiä.",
+        r6_title: "Roast Trio Combo (Kahdelle)",
+        r6_desc: "Jaa parhaat maut: Lechon-porsaanvatsaa, Inasal-kanaa ja Char Siu -ribsejä kahdelle riisien ja dippien kera.",
+        b1_title: "Pork Sisig Rice Bowl",
+        b1_desc: "Pannulla tirisevää rapeaa porsaanlihaa, sipulia, chiliä, paistettu kananmuna ja valkosipuliriisi (Sinangag).",
+        b2_title: "Classic Chicken Adobo Bowl",
+        b2_desc: "Filippiinien kansallisruoka: hitaasti soijassa, etikassa, valkosipulissa ja laakerinlehdissä haudutettua kanaa.",
+        b3_title: "Kookos-Keltajuuri Kasviscurry",
+        b3_desc: "Kermainen kurkuma-kookoskastike, paistettua tofua, bataattia, vihreitä papuja ja tuoretta korianteria.",
+        s1_title: "Lumpiang Shanghai (6 kpl)",
+        s1_desc: "Rapeita filippiiniläisiä kevätrullia porsaanliha- ja kasvistätteellä sekä makeaa chilikastiketta.",
+        s2_title: "Roast Pork Belly Bao Buns (2 kpl)",
+        s2_desc: "Pehmeät höyrysämpylät, rapeaa porsaanvatsaa, hoisin-kastiketta, kurkkua ja maapähkinämurskaa.",
+        s3_title: "Sticky Calamansi Wings (6 kpl)",
+        s3_desc: "Rapeat kanansiivet makean tulisella calamansi-hunajaglasyyreilla ja seesaminsiemenillä.",
+        d1_title: "Club Halo-Halo Special",
+        d1_desc: "Klassinen aasialainen jäähilejälkiruoka: ube-jäätelöä, leche flania, makeita papuja, kookoshyytelöä ja maitoa.",
+        d2_title: "Ube Leche Flan Cake",
+        d2_desc: "Kerroskakkupala: pehmeää violettia ube-sokerikakkua ja karamellista kermaista paahtovanukasta.",
+        dr1_title: "Calamansi Jäätee & Juomat",
+        dr1_desc: "Raikas itsetehty calamansi-sitrusjäätee, aasialaiset oluet (San Miguel, Singha) ja virvokkeet.",
+        woltBannerTitle: "Tilaa Rice & Roast Kotiin tai Nouda",
+        woltBannerDesc: "Koko ruokalista saatavilla nopealla kotiinkuljetuksella Woltista tai kätevästi mukaan noudettuna Kauppalantieltä!",
+        galleryBadge: "Tunnelmia",
+        galleryTitle: "Clubin Fiilistä & Ruokaa",
+        g1_tag: "Rapea Paisti",
+        g2_tag: "Garlic Rice Bowls",
+        g3_tag: "BBQ Ribsit",
+        g4_tag: "Urbaani Ilmapiiri",
+        resBadge: "Varaus & Noutotilaus",
+        resTitle: "Pöytävaraus tai Ennakkotilaus",
+        resSubtitle: "Varaa pöytä paikan päältä nauttimiseen tai tilaa takeaway etukäteen noudettavaksi. Vahvistamme varauksen viipymättä!",
+        labelName: "Nimi *",
+        labelPhone: "Puhelinnumero *",
+        labelDate: "Päivämäärä *",
+        labelType: "Tyyppi *",
+        optTable: "Pöytävaraus ravintolaan",
+        optTakeaway: "Takeaway Noutotilaus",
+        labelGuests: "Henkilömäärä / Koko *",
+        opt1: "1 hlö / 1 annos",
+        opt2: "2 hlö / 2 annosta",
+        opt3: "3–4 hlö / Perheateria",
+        opt4: "5+ hlö / Ryhmävaraus",
+        labelNotes: "Toiveet, allergiat tai tilattavat annokset",
+        phName: "Antti Lehtonen",
+        phPhone: "+358 40 123 4567",
+        phNotes: "Esim. 2x Crispy Lechon Pork Belly, nouto klo 18:00...",
+        btnSubmitRes: "Lähetä Varaus / Tilaus",
+        reviewsBadge: "Asiakaspalautteet",
+        reviewsTitle: "Mitä Asiakkaamme Sanovat",
+        rev1_text: '"Koko Helsingin rapein ja mehukkain possunkylki! Valkosipuliriisi vie kielen mennessään ja palvelu on todella ystävällistä. Haagan ehdoton helmi!"',
+        rev2_text: '"Incredible roast pork belly and flavorful Chicken Inasal! True authentic tastes with modern style. The Halo-Halo dessert was the cherry on top."',
+        rev3_text: '"Очень крутое заведение! Хрустящая свинина лечон с чесночным рисом — шедевр. Стильный современный интерьер и огромные порции. Обязательно вернемся!"',
+        contactBadge: "Löydä Meidät",
+        contactTitle: "Sijainti & Aukiolo",
+        addressLabel: "Osoite",
+        openMaps: "Avaa Google Mapsissa →",
+        phoneLabel: "Puhelin & Tilaukset",
+        hoursTitle: "Aukioloajat",
+        daysMonFri: "Maanantai – Perjantai",
+        daySat: "Lauantai",
+        daySun: "Sunnuntai",
+        lunchHoursNote: "Lounasaika (Ma–Pe)",
+        openMapRoute: "Reittiohjeet →",
+        footerTagline: "Rapeaa paistia, hitaasti kypsennettyä BBQ:ta ja höyryäviä mausteisia riisikulhoja Helsingin Etelä-Haagassa.",
+        footerNavTitle: "Pikalinkit",
+        modalTitle: "Varaus / Tilaus Vastaanotettu!",
+        modalMsg: "Kiitos tilauksestasi tai varauksestasi. Olemme vastaanottaneet tietosi ja otamme sinuun pikaisesti yhteyttä vahvistuksemme kera. Nähdään The Rice & Roast Clubilla!",
+        btnModalClose: "Selvä, kiitos!"
+      },
+      en: {
+        navSubtitle: "Modern Kitchen & Grill",
+        navAbout: "Concept",
+        navLunch: "Lunch",
+        navMenu: "Menu",
+        navGallery: "Ambience",
+        navContact: "Contact",
+        navReserveBtn: "Book / Order",
+        heroBadgeStatus: "Open Today • Kitchen open until 21:00",
+        heroTitlePart1: "Crispy roasts,",
+        heroTitlePart2: "& fragrant rice bowls",
+        heroSubtitle: "The Rice & Roast Club combines modern street food culture, slow-cooked juicy roasts, crackling pork belly, and hearty spiced rice bowls in Haaga, Helsinki.",
+        heroCtaMenu: "Explore Menu",
+        heroCtaReserve: "Book Table / Takeaway",
+        statSlowRoast: "Slow Roasted",
+        statCrispy: "Crispy Crackling",
+        statLunch: "Lunch from",
+        heroFloatBadgeSub: "House Classic",
+        heroFloatBadgeTitle: "Crispy Pork Belly & Garlic Rice",
+        lunchBadge: "Weekdays Mon–Fri 10:30–15:00",
+        lunchTitle: "Club Lunch: Crispy Roast & Rice",
+        lunchDesc: "Daily changing lunch combos: crispy pork, grilled chicken or tofu, fragrant garlic rice, house atchara pickles and dips!",
+        btnViewMenu: "View Lunch Menu",
+        aboutBadge: "Passion for Roasts & Rice",
+        aboutTitle: "Crackling crispy skin, tender meat and soulful spices",
+        aboutDesc1: "The Rice & Roast Club was born from a deep devotion to Southeast Asian and Filipino roast traditions, where crackling meats and steaming garlic rice unite in pure perfection.",
+        aboutDesc2: "Located on Kauppalantie in Haaga, our modern restaurant offers an urban relaxed setting, generous portions, and high-impact flavor profiles. Whether dining in or grabbing a feast to go, everything is prepared fresh with love.",
+        aboutFeat1: "Master Roasting",
+        aboutFeat1Desc: "Authentic marination & ultra-crispy crackling skin",
+        aboutFeat2: "Fragrant Garlic Rice & Sauces",
+        aboutFeat2Desc: "Signature Sinangag rice and homemade savory dips",
+        menuBadge: "Diverse Selection",
+        menuTitle: "The Rice & Roast Club Menu",
+        menuSubtitle: "Choose your favorite from crispy signature roasts, wholesome rice bowls, and craveable street bites!",
+        tabRoasts: "Signature Roasts & BBQ",
+        tabBowls: "Rice Bowls & Woks",
+        tabBites: "Street Bites & Baos",
+        tabDrinks: "Desserts & Drinks",
+        tagSignature: "House Signature",
+        tagGlutenFree: "Gluten Free",
+        tagPopular: "Crowd Favorite",
+        tagVeg: "Vegan / Veggie",
+        r1_title: "Crispy Lechon Pork Belly",
+        r1_desc: "Slow-roasted pork belly with golden crackling skin, savory house liver sauce, pickled papaya (Atchara), and jasmine rice.",
+        r2_title: "Chicken Inasal Grill Platter",
+        r2_desc: "Juicy chicken leg marinated in lemongrass, ginger, and calamansi lime, served with annatto rice and spiced soy-vinegar dip.",
+        r3_title: "Char Siu BBQ Pork Ribs",
+        r3_desc: "Caramelized Cantonese-style pork ribs glazed in five-spice barbecue reduction, toasted sesame, and garlic rice.",
+        r4_title: "Roast Duck & Bok Choy",
+        r4_desc: "Tender roasted duck with crispy skin, steamed bok choy greens, duck jus reduction, and aromatic rice.",
+        r5_title: "Glazed Beef Brisket Plate",
+        r5_desc: "Melt-in-your-mouth slow-braised beef brisket simmered in dark garlic-soy glaze, spring onions, and steamed rice.",
+        r6_title: "Roast Trio Combo (For Two)",
+        r6_desc: "Share the finest roasts: Crispy Lechon pork belly, Chicken Inasal, and Char Siu ribs served with rice and assorted dips.",
+        b1_title: "Pork Sisig Rice Bowl",
+        b1_desc: "Sizzling minced crispy pork, onions, chili, fried egg, and fragrant Sinangag garlic fried rice.",
+        b2_title: "Classic Chicken Adobo Bowl",
+        b2_desc: "Filipino national icon: chicken braised slow and low in dark soy sauce, cane vinegar, crushed garlic, and bay leaves.",
+        b3_title: "Coconut Turmeric Veggie Curry",
+        b3_desc: "Creamy coconut and yellow turmeric curry with pan-seared tofu, sweet potato, green beans, and fresh coriander.",
+        s1_title: "Lumpiang Shanghai (6 pcs)",
+        s1_desc: "Crispy Filipino spring rolls filled with seasoned minced pork and aromatics, served with sweet chili sauce.",
+        s2_title: "Roast Pork Belly Bao Buns (2 pcs)",
+        s2_desc: "Fluffy steamed lotus buns stuffed with crispy pork belly, sweet hoisin glaze, fresh cucumber, and crushed peanuts.",
+        s3_title: "Sticky Calamansi Wings (6 pcs)",
+        s3_desc: "Double-fried crispy chicken wings coated in a tangy sweet calamansi honey glaze with sesame seeds.",
+        d1_title: "Club Halo-Halo Special",
+        d1_desc: "Legendary Asian shaved ice parfait: ube ice cream, rich leche flan, sweetened beans, coconut jelly, and evaporated milk.",
+        d2_title: "Ube Leche Flan Cake",
+        d2_desc: "Dual-layer cake: soft purple yam chiffon base topped with silky smooth golden caramel custard flan.",
+        dr1_title: "Calamansi Iced Tea & Drinks",
+        dr1_desc: "House-brewed refreshing calamansi citrus iced tea, Asian craft beers (San Miguel, Singha), and sodas.",
+        woltBannerTitle: "Order Rice & Roast Direct to Your Door or Pickup",
+        woltBannerDesc: "Our entire menu is available for express delivery on Wolt or for convenient takeaway pickup on Kauppalantie!",
+        galleryBadge: "Atmosphere",
+        galleryTitle: "Club Vibes & Food",
+        g1_tag: "Crispy Roasts",
+        g2_tag: "Garlic Rice Bowls",
+        g3_tag: "BBQ Ribs",
+        g4_tag: "Urban Setting",
+        resBadge: "Reservations & Orders",
+        resTitle: "Table Booking or Pre-Order",
+        resSubtitle: "Reserve your table or pre-order your takeaway feast in advance. We confirm quickly!",
+        labelName: "Full Name *",
+        labelPhone: "Phone Number *",
+        labelDate: "Date *",
+        labelType: "Order Type *",
+        optTable: "Table Reservation",
+        optTakeaway: "Takeaway Pre-Order",
+        labelGuests: "Party Size / Portions *",
+        opt1: "1 person / 1 dish",
+        opt2: "2 people / 2 dishes",
+        opt3: "3–4 people / Family meal",
+        opt4: "5+ people / Large party",
+        labelNotes: "Dishes to order or special wishes",
+        phName: "Alexander Smith",
+        phPhone: "+358 40 123 4567",
+        phNotes: "E.g. 2x Crispy Lechon Pork Belly, pickup at 18:00...",
+        btnSubmitRes: "Submit Booking / Order",
+        reviewsBadge: "Guest Reviews",
+        reviewsTitle: "What Our Guests Say",
+        rev1_text: '"The crispiest, juiciest pork belly in all of Helsinki! The garlic rice is to die for, and the crew is genuinely warm and welcoming."',
+        rev2_text: '"Incredible roast pork belly and flavorful Chicken Inasal! True authentic tastes with modern style. The Halo-Halo dessert was the cherry on top."',
+        rev3_text: '"An absolute gem in Haaga! Incredible crispy Lechon pork with garlic rice. Generous portions, stylish vibe, and amazing flavors."',
+        contactBadge: "Find Us",
+        contactTitle: "Location & Hours",
+        addressLabel: "Address",
+        openMaps: "Open in Google Maps →",
+        phoneLabel: "Phone & Inquiries",
+        hoursTitle: "Opening Hours",
+        daysMonFri: "Monday – Friday",
+        daySat: "Saturday",
+        daySun: "Sunday",
+        lunchHoursNote: "Lunch Hours (Mon–Fri)",
+        openMapRoute: "Get Directions →",
+        footerTagline: "Crackling crispy roasts, slow-cooked Asian BBQ, and fragrant garlic rice bowls in Etelä-Haaga, Helsinki.",
+        footerNavTitle: "Quick Links",
+        modalTitle: "Request Received!",
+        modalMsg: "Thank you for reaching out! We have received your order/booking details and will be in touch promptly with a confirmation. See you at The Rice & Roast Club!",
+        btnModalClose: "Got it, thanks!"
+      },
+      ru: {
+        navSubtitle: "Современная кухня & Гриль",
+        navAbout: "О нас",
+        navLunch: "Ланч",
+        navMenu: "Меню",
+        navGallery: "Атмосфера",
+        navContact: "Контакты",
+        navReserveBtn: "Заказ / Бронь",
+        heroBadgeStatus: "Открыто сегодня • Кухня до 21:00",
+        heroTitlePart1: "Хрустящее мясо из печи,",
+        heroTitlePart2: "& ароматные рисовые боулы",
+        heroSubtitle: "The Rice & Roast Club объединяет современную культуру азиатского стритфуда, томленый BBQ, нежнейшую свиную грудинку лечон с хрустящей корочкой и сытные боулы в Хельсинки.",
+        heroCtaMenu: "Смотреть Меню",
+        heroCtaReserve: "Забронировать / На вынос",
+        statSlowRoast: "Медленное запекание",
+        statCrispy: "Хрустящая корочка",
+        statLunch: "Ланчи от",
+        heroFloatBadgeSub: "Хит ресторана",
+        heroFloatBadgeTitle: "Crispy Pork Belly & Чесночный рис",
+        lunchBadge: "По будням Пн–Пт 10:30–15:00",
+        lunchTitle: "Клубный Ланч: Мясо из печи & Рис",
+        lunchDesc: "Ежедневно меняющиеся сытные комбо: хрустящая свинина, курица гриль или тофу, чесночный рис, домашние маринады и соусы!",
+        btnViewMenu: "Смотреть меню ланча",
+        aboutBadge: "Страсть к Мясу & Рису",
+        aboutTitle: "Идеальный хруст, сочное мясо и глубокий вкус специй",
+        aboutDesc1: "The Rice & Roast Club родился из любви к культуре барбекю и запеченного мяса Юго-Восточной Азии и Филиппин, где ароматный чесночный рис и сочное мясо создают гармонию вкуса.",
+        aboutDesc2: "Наш современный ресторан на Kauppalantie в районе Хаага предлагает динамичный урбан-интерьер, внушительные порции и взрывной азиатский вкус. Каждое блюдо готовится свежим и с душой.",
+        aboutFeat1: "Аутентичный обжиг",
+        aboutFeat1Desc: "Особый маринад и невероятно хрустящая корочка",
+        aboutFeat2: "Чесночный рис & Соусы",
+        aboutFeat2Desc: "Рис Синангаг и домашние соусы",
+        menuBadge: "Большой выбор",
+        menuTitle: "Меню The Rice & Roast Club",
+        menuSubtitle: "Выбирайте фирменное хрустящее мясо из печи, сытные рисовые боулы или сочные закуски!",
+        tabRoasts: "Мясо из печи & BBQ",
+        tabBowls: "Боулы с рисом & Вок",
+        tabBites: "Закуски & Бао",
+        tabDrinks: "Десерты & Напитки",
+        tagSignature: "Главный хит",
+        tagGlutenFree: "Без глютена",
+        tagPopular: "Выбор гостей",
+        tagVeg: "Веган / Вегетарианское",
+        r1_title: "Crispy Lechon Pork Belly",
+        r1_desc: "Томленая запеченная свиная грудинка с ультрахрустящей корочкой, домашним соусом, маринованной папайей (атчара) и жасминовым рисом.",
+        r2_title: "Chicken Inasal на гриле",
+        r2_desc: "Сочный куриный окорочок, маринованный в лемонграссе, имбире и каламанси, с рисом аннато и соево-перечным соусом.",
+        r3_title: "Ребрышки Char Siu BBQ",
+        r3_desc: "Карамелизированные свиные ребрышки в кантонской глазури из пяти специй с кунжутом и чесночным рисом.",
+        r4_title: "Утка по-пекински & Пак-чой",
+        r4_desc: "Нежная запеченная утка с хрустящей кожей, тушеная капуста пак-чой, соус из утиного сока и рис.",
+        r5_title: "Томленый говяжий брискет",
+        r5_desc: "Тающая во рту говяжья грудинка долгого томления в чесночно-соевой глазури с зеленым луком и рисом.",
+        r6_title: "Мясное комбо Трио (На двоих)",
+        r6_desc: "Сет на двоих: хрустящий лечон, курица инасал и ребрышки чар сью с рисом и набором соусов.",
+        b1_title: "Pork Sisig Rice Bowl",
+        b1_desc: "Шкворчащая рубленая хрустящая свинина с луком, перцем чили, жареным яйцом и чесночным рисом Синангаг.",
+        b2_title: "Классический Chicken Adobo",
+        b2_desc: "Легендарное филиппинское блюдо: курица, томленная в темном соевом соусе, тростниковом уксусе, чесноке и лавровом листе.",
+        b3_title: "Кокосовый желтый карри (Веган)",
+        b3_desc: "Сливочный соус на кокосовом молоке с куркумой, жареный тофу, батат, стручковая фасоль и кинза.",
+        s1_title: "Lumpiang Shanghai (6 шт)",
+        s1_desc: "Хрустящие тонкие спринг-роллы со свиным фаршем и овощами со сладко-острым соусом чили.",
+        s2_title: "Бао-булочки со свининой (2 шт)",
+        s2_desc: "Воздушные паровые булочки бао с хрустящей свининой, соусом хойсин, свежим огурцом и дробленым арахисом.",
+        s3_title: "Крылышки в глазури Каламанси (6 шт)",
+        s3_desc: "Хрустящие куриные крылышки в кисло-сладкой глазури из цитруса каламанси и меда с кунжутом.",
+        d1_title: "Фирменный десерт Halo-Halo",
+        d1_desc: "Знаменитый азиатский десерт: ледяная крошка, мороженое из фиолетового ямса убэ, карамельный флан, сладкие бобы и молоко.",
+        d2_title: "Пирог Ube Leche Flan",
+        d2_desc: "Двухслойный десерт: нежный бисквит убэ и шелковистый карамельный пудинг лече флан.",
+        dr1_title: "Айс-ти Каламанси & Напитки",
+        dr1_desc: "Освежающий домашний чай с цитрусом каламанси, азиатское пиво (San Miguel, Singha) и газировки.",
+        woltBannerTitle: "Закажите The Rice & Roast Club с доставкой",
+        woltBannerDesc: "Все меню доступно для экспресс-доставки через сервис Wolt или для самовывоза с Kauppalantie!",
+        galleryBadge: "Атмосфера",
+        galleryTitle: "Блюда & Стиль The Club",
+        g1_tag: "Хрустящее Мясо",
+        g2_tag: "Чесночные Боулы",
+        g3_tag: "Ребрышки BBQ",
+        g4_tag: "Урбан Атмосфера",
+        resBadge: "Бронь & Предзаказ",
+        resTitle: "Бронирование столика или заказ на вынос",
+        resSubtitle: "Забронируйте столик в зале или оформите предзаказ takeaway. Мы оперативно подтвердим заявку!",
+        labelName: "Ваше имя *",
+        labelPhone: "Номер телефона *",
+        labelDate: "Дата *",
+        labelType: "Тип заказа *",
+        optTable: "Бронь столика в зале",
+        optTakeaway: "Takeaway (На вынос)",
+        labelGuests: "Количество гостей / порций *",
+        opt1: "1 персона / 1 блюдо",
+        opt2: "2 персоны / 2 блюда",
+        opt3: "3–4 персоны / Семейный обед",
+        opt4: "5+ персон / Группа",
+        labelNotes: "Пожелания, аллергии или позиции для заказа",
+        phName: "Иван Петров",
+        phPhone: "+358 40 123 4567",
+        phNotes: "Например, 2x Crispy Lechon Pork Belly, заберу в 18:00...",
+        btnSubmitRes: "Отправить бронь / заказ",
+        reviewsBadge: "Отзывы гостей",
+        reviewsTitle: "О нас говорят с восторгом",
+        rev1_text: '"Koko Helsingin rapein ja mehukkain possunkylki! Valkosipuliriisi vie kielen mennessään ja palvelu on todella ystävällistä. Haagan ehdoton helmi!"',
+        rev2_text: '"Incredible roast pork belly and flavorful Chicken Inasal! True authentic tastes with modern style. The Halo-Halo dessert was the cherry on top."',
+        rev3_text: '"Очень крутое заведение! Хрустящая свинина лечон с чесночным рисом — шедевр. Стильный современный интерьер и огромные порции. Обязательно вернемся!"',
+        contactBadge: "Как нас найти",
+        contactTitle: "Локация и график работы",
+        addressLabel: "Адрес",
+        openMaps: "Открыть на Google Maps →",
+        phoneLabel: "Телефон & Заказы",
+        hoursTitle: "Часы работы",
+        daysMonFri: "Понедельник – Пятница",
+        daySat: "Суббота",
+        daySun: "Воскресенье",
+        lunchHoursNote: "Время ланча (Пн–Пт)",
+        openMapRoute: "Маршрут в Google Maps →",
+        footerTagline: "Хрустящее запеченное мясо, томленый BBQ и горячие чесночные рисовые боулы в Хельсинки.",
+        footerNavTitle: "Навигация",
+        modalTitle: "Заказ / Бронь принята!",
+        modalMsg: "Спасибо! Мы получили ваши данные и свяжемся с вами в ближайшее время для подтверждения времени или столика. Ждем вас в The Rice & Roast Club!",
+        btnModalClose: "Отлично, спасибо!"
+      }
+    };
+
+    let currentLang = 'fi';
+
+    function changeLanguage(lang) {
+      if (!i18n[lang]) return;
+      currentLang = lang;
+      try {
+        localStorage.setItem('riceroast_lang', lang);
+      } catch (e) {}
+
+      // Desktop Switcher Styling
+      const langs = ['fi', 'en', 'ru'];
+      langs.forEach(l => {
+        const btn = document.getElementById(`lang-${l}`);
+        if (btn) {
+          if (l === lang) {
+            btn.className = 'lang-btn px-2.5 py-1 rounded-lg bg-brand-orange text-white transition shadow-sm font-extrabold';
+          } else {
+            btn.className = 'lang-btn px-2.5 py-1 rounded-lg text-brand-gray hover:text-white transition';
+          }
+        }
+      });
+
+      // Mobile Switcher Styling
+      langs.forEach(l => {
+        const mBtn = document.getElementById(`lang-m-${l}`);
+        if (mBtn) {
+          if (l === lang) {
+            mBtn.className = 'lang-btn-mobile px-2 py-0.5 rounded-md bg-brand-orange text-white font-extrabold';
+          } else {
+            mBtn.className = 'lang-btn-mobile px-2 py-0.5 rounded-md text-brand-gray';
+          }
+        }
+      });
+
+      // Update text nodes
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (i18n[lang] && i18n[lang][key] !== undefined) {
+          el.innerText = i18n[lang][key];
+        }
+      });
+
+      // Update Placeholders
+      const fName = document.getElementById('fieldName');
+      const fPhone = document.getElementById('fieldPhone');
+      const fNotes = document.getElementById('fieldNotes');
+      if (fName && i18n[lang].phName) fName.placeholder = i18n[lang].phName;
+      if (fPhone && i18n[lang].phPhone) fPhone.placeholder = i18n[lang].phPhone;
+      if (fNotes && i18n[lang].phNotes) fNotes.placeholder = i18n[lang].phNotes;
+
+      document.documentElement.lang = lang;
+    }
+
+    // 2. Menu Category Filtering
+    function filterMenu(category) {
+      const categories = ['roasts', 'bowls', 'bites', 'drinks'];
+      categories.forEach(cat => {
+        const tabBtn = document.getElementById(`tab-${cat}`);
+        if (tabBtn) {
+          if (cat === category) {
+            tabBtn.className = 'menu-tab whitespace-nowrap px-5 py-2.5 rounded-xl text-xs font-extrabold bg-brand-orange text-white shadow transition flex-shrink-0';
+          } else {
+            tabBtn.className = 'menu-tab whitespace-nowrap px-5 py-2.5 rounded-xl text-xs font-extrabold bg-brand-surface text-white border border-brand-border hover:bg-brand-card transition flex-shrink-0';
+          }
+        }
+      });
+
+      const cards = document.querySelectorAll('.menu-item');
+      cards.forEach(card => {
+        if (card.classList.contains(category)) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
+    // 3. Mobile Navigation Drawer
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    if (mobileMenuToggle && mobileMenu) {
+      mobileMenuToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+
+    function closeMobileMenu() {
+      if (mobileMenu) {
+        mobileMenu.classList.add('hidden');
+      }
+    }
+
+    // 4. Form Submission Handler
+    function handleReservation(e) {
+      e.preventDefault();
+      const modal = document.getElementById('reservationModal');
+      if (modal) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      }
+      e.target.reset();
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('reservationModal');
+      if (modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+    }
+
+    const resModal = document.getElementById('reservationModal');
+    if (resModal) {
+      resModal.addEventListener('click', (e) => {
+        if (e.target.id === 'reservationModal') {
+          closeModal();
+        }
+      });
+    }
+
+    // 5. Init on DOM Loaded
+    window.addEventListener('DOMContentLoaded', () => {
+      const yearSpan = document.getElementById('currentYear');
+      if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+      }
+      let savedLang = 'fi';
+      try {
+        savedLang = localStorage.getItem('riceroast_lang') || 'fi';
+      } catch (e) {}
+      changeLanguage(savedLang);
+    });
+  </script>
+</body>
+</html>
